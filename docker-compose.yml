@@ -1,0 +1,29 @@
+services:
+  servicein:
+    build:
+      context: ./serviceIN
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    networks:
+      - my-network
+    depends_on:
+      - serviceout
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - ANALYTICS_SERVICE_URL=http://serviceout:8082
+
+  serviceout:
+    build:
+      context: ./serviceOUT
+      dockerfile: Dockerfile
+    ports:
+      - "8082:8082"
+    networks:
+      - my-network
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+
+networks:
+  my-network:
+    driver: bridge
