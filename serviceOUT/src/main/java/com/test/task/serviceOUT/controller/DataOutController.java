@@ -19,7 +19,7 @@ import java.util.Base64;
 public class DataOutController {
     @PostMapping("/frame")
     public FrameResultDTO analyzeFrame(@RequestBody FrameDTO frameDTO) {
-        log.info("Получен кадр с временной меткой {}", frameDTO.getTimestamp());
+        log.info("Frame recived");
         try {
             byte[] imageBytes = Base64.getDecoder().decode(frameDTO.getFrameData());
             ByteArrayInputStream bais = new ByteArrayInputStream(imageBytes);
@@ -38,8 +38,8 @@ public class DataOutController {
             result.setNote("Frame analyzed");
             return result;
         } catch (Exception e) {
-            log.error("Ошибка при обработке кадра", e);
-            throw new RuntimeException("Ошибка обработки кадра: " + e.getMessage());
+            log.error("Frame processing error:", e);
+            throw new RuntimeException("Frame processing error: " + e.getMessage());
         }
     }
 }
