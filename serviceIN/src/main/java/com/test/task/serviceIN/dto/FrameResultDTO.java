@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class FrameResultDTO {
     private String timestamp;
-    private float frameSize;
-    private float width;
-    private float height;
+    private int frameSize;
+    private int width;
+    private int height;
     private String note;
 }
