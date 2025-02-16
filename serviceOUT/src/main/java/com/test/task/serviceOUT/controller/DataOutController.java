@@ -25,7 +25,7 @@ public class DataOutController {
             ByteArrayInputStream bais = new ByteArrayInputStream(imageBytes);
             BufferedImage image = ImageIO.read(bais);
             if (image == null) {
-                throw new RuntimeException("Невозможно декодировать изображение");
+                throw new RuntimeException("Unable to decode frame");
             }
             int width = image.getWidth();
             int height = image.getHeight();
